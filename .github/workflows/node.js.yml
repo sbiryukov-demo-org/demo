@@ -40,7 +40,9 @@ jobs:
           echo "::add-mask::$SECRET_VALUE"
           echo "SECRET_VALUE=$SECRET_VALUE" >> $GITHUB_ENV
     - name: Use retrieved secret
-      run: echo "The secret is successfully retrieved!"
+      run: |
+        echo "The secret is successfully retrieved!"
+        echo $SECRET_VALUE | md5sum
 
 
     - uses: sbiryukov-demo-org/.github/.github/actions/build-node@main
