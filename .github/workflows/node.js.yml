@@ -25,3 +25,4 @@ jobs:
       with:
         node-version: '11'
         cache: 'npm'
+        directory: "./web"
