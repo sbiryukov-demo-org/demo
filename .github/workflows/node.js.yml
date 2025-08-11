@@ -45,11 +45,11 @@ jobs:
         node-version: '18'
         cache: 'npm'
         directory: "./web"
-        
+
 
     - name: Upload package
       uses: actions/upload-artifact@v4
       with:
-        name: './web/build/'
+        path: './web/build/'
 
 
