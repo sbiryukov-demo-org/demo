@@ -45,24 +45,11 @@ jobs:
         node-version: '18'
         cache: 'npm'
         directory: "./web"
-
-    # create a package with the built code
-    - name: Create package
-      run: |
-        echo "Creating package with built code..."
-        mkdir -p package
-        cp -r web/build/* package/
-        echo "Package created successfully."
-
-    - name: Zip package
-      run: |
-        echo "Zipping the package..."
-        zip -r package.zip package/
-        echo "Package zipped successfully."
+        
 
     - name: Upload package
       uses: actions/upload-artifact@v4
       with:
-        name: package.zip
+        name: './web/build/'
 
 
