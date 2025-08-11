@@ -21,7 +21,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: sbiryukov-demo-org/.github/.github/actions/build-node@main
+    - uses: sbiryukov-demo-org/actions/.github/actions/build-node@main
       with:
         node-version: '11'
         cache: 'npm'
