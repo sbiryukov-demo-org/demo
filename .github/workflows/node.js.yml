@@ -16,11 +16,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
     - uses: actions/checkout@v4
 
@@ -42,7 +37,7 @@ jobs:
     - name: Use retrieved secret
       run: |
         echo "The secret is successfully retrieved!"
-        echo $SECRET_VALUE | md5sum
+        echo $SECRET_VALUE | md5
 
 
     - uses: sbiryukov-demo-org/.github/.github/actions/build-node@main
@@ -50,3 +45,24 @@ jobs:
         node-version: '11'
         cache: 'npm'
         directory: "./web"
+
+    # create a package with the built code
+    - name: Create package
+      run: |
+        echo "Creating package with built code..."
+        mkdir -p package
+        cp -r web/build/* package/
+        echo "Package created successfully."
+
+    - name: Zip package
+      run: |
+        echo "Zipping the package..."
+        zip -r package.zip package/
+        echo "Package zipped successfully."
+
+    - name: Upload package
+      uses: actions/upload-artifact@v3
+      with:
+        name: package.zip
+
+
