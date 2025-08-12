@@ -53,9 +53,9 @@ jobs:
       with:
         path: './web/build/'
 
-    - run: cd ./web && npm publish
-      name: Publish package
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # - run: cd ./web && npm publish
+    #   name: Publish package
+    #   env:
+    #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
