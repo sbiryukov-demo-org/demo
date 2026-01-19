@@ -31,7 +31,7 @@ jobs:
         echo "Building docker image..."
 
     - name: Promote image to production acr
-      if: ${{ github.event.inputs.deploy_to_production == true }}
+      if: ${{ github.event.inputs.deploy_to_production == 'true' }}
       run: |
         echo "Promoting image to production ACR..."
   
@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-container
     environment: prod
-    #if: ${{ github.event.inputs.deploy_to_production == true }}
+    if: ${{ github.event.inputs.deploy_to_production == 'true' }}
     steps:
 
     - name: Deploy to prod environment
